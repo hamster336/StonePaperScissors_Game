@@ -26,8 +26,8 @@ public class Game implements ActionListener {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.getContentPane().setBackground(Color.WHITE);
-        // frame.getContentPane().setBackground(new Color(80, 100, 100));
+        frame.getContentPane().setBackground(Color.WHITE);          // makes the backfround color white
+        // frame.getContentPane().setBackground(new Color(80, 100, 100));   // makes the bg color a blend of thr rgb in given proportion
 
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
 
@@ -72,8 +72,10 @@ public class Game implements ActionListener {
         rock.setBounds(25, 100, 150, 40);
         paper.setBounds(200, 100, 150, 40);
         scissors.setBounds(375, 100, 150, 40);
-        submit.setBounds(600, 160, 150, 35);
-        next.setBounds(600, 160, 150, 35);
+
+        submit.setBounds(375, 160, 150, 35);
+        next.setBounds(375, 160, 150, 35);
+
         close.setBounds(25, 160, 150, 40);
 
         frame.add(rock);
@@ -154,12 +156,8 @@ public class Game implements ActionListener {
             String message = "Computer chose: ";
             screen.setText(message.concat(computerChoice));
 
-            next.setBounds(375, 160, 150, 35);
-            submit.setBounds(600, 160, 150, 35);
-
-            rock.setEnabled(false);
-            paper.setEnabled(false);
-            scissors.setEnabled(false);
+            frame.add(next);
+            frame.remove(submit);
         }
 
         if (e.getSource() == next) {
@@ -175,13 +173,13 @@ public class Game implements ActionListener {
                 screen.setText("");
                 screen.setText("You Lost :(");
             }
-
-                // submit.setBounds(375, 160, 150, 35);
-            next.setBounds(600, 160, 150, 35);
-
+            
             rock.setEnabled(true);
             paper.setEnabled(true);
             scissors.setEnabled(true);
+
+            frame.add(submit);
+            frame.remove(next);
         }
 
         if (e.getSource() == close) {
